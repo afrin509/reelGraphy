@@ -35,7 +35,25 @@ async function submitUser({
   const db = getFirestore(app);
 
   const docRef = doc(db, 'userList', username);
+  console.log('docRef', docRef);
   const docSnap = await getDoc(docRef);
+  // let attempts = 0;
+  // const maxAttempts = 3;
+  // while (!docSnap && attempts < maxAttempts) {
+  //   attempts++;
+  //   try {
+  //     docSnap = await getDoc(docRef);
+  //   } catch (error) {
+  //     console.error('Error fetching document:', error);
+  //     if (error.code === 'ECONNRESET') {
+  //       console.warn('Retrying request (attempt', attempts, ')');
+  //     } else {
+  //       // Handle other errors differently
+  //       throw error;
+  //     }
+  //   }
+  // }
+  // await getDoc(docRef);
   let userId: any;
 
   if (docSnap.exists()) {
